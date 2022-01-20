@@ -8,7 +8,8 @@ type Node struct {
 	counter  int
 }
 
-func (n *Node) lookAround(board *Board) {
+// Each node looks what is the status of all its neighbours ...
+func (n *Node) lookAround(board *Game) {
 	count := 0
 
 	south := board.getNode(n.height+1, n.width)
@@ -44,6 +45,7 @@ func (n *Node) lookAround(board *Board) {
 		count++
 	}
 
+	// ... here the rules of the game are applied
 	if n.live {
 		if count < 2 {
 			n.willLive = false
